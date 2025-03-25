@@ -1,40 +1,40 @@
-def get_input():
-    #fuction that gets user input; two integers and the operation  type.
-    try:
-        num1: int = input("ENTER num1: ")
-        num2: int = input("ENTER NUM2: ")
-        operation: str = input("TYPE OF OPERATION /,+,-,*: ")
-    except ValueError:
-        print("invalid input. Please enter valiid integers")
-        return None, None, None
-    return num1,num2,operation
+#ask the user for input
 
-def perform_operation(num1,num2,operation):
-    #function performing operations depending  on thetype of inputed operation
-    if operation  == '+':
+def get_input():
+    #get two integers and an expression
+    try:
+        num1 = int(input("Enter num1: "))
+        num2 = int(input("Enter num2: "))
+        operation = input("Enter the operation: ")
+    except ValueError:
+        print("Invalid input. enter valid integers.")
+        return None, None, None
+    return num1, num2, operation
+# print(get_input())
+
+def perform_operation(num1, num2, operation):
+    if operation == "+":
         return num1 + num2
-    elif operation == '-':
+    elif operation == "-":
         return num1 - num2
-    elif operation == '*':
+    elif operation == "*":
         return num1 * num2
-    elif operation == '**':
-        return num1 ** num2
-    elif  operation =='/':
+    elif operation == "/":
         try:
-            return num1 / num2
+            return num1/num2
         except ZeroDivisionError:
-            print("ERROR DIVISION BY ZERO")
+            print(f"{num1} is not divisible by {num2}")
             return None
     else:
-        print("INVALID OPERATION. PLEASE ENTER ONE OF THE FOLLOWING OPERATIONS; +,-,*,/,** ")
-
+        print(f"{operation}: is invalid enter another opertation")
+        
 def main():
-    #main function to  run the calculator module
-    num1,num2,operation = get_input()
-    if num1 is  not None and num2  is  not None and operation is not None:
-        result = perform_operation(num1,num2,operation)
-        if result is  not None:
-            print(f"the result of {num1}{operation}{num2}is:{result}")
+    # main function to run the program
+    num1, num2, operation = get_input()
+    if num1 is not None and num2 is not None and operation is not None:
+        result = perform_operation(num1, num2, operation)
+        if result is not None:
+            print(f"{num1} {operation} {num2} = {result}")
 
-if __name__ == "":
-    main()
+if __name__ == "__main__":
+    main() 
